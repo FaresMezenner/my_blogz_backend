@@ -98,6 +98,8 @@ blogsRouter.delete("/delete", async (req, res) => {
 app.use("/api/blogs", blogsRouter)
 
 app.use("/", (req, res) => {
+    const ipAddress = req.ip || req.connection.remoteAddress;
+    console.log("User IP Address:", ipAddress);
     res.send("Welcome to the blog api")
 })
 
