@@ -56,7 +56,10 @@ blogsRouter.post("/create", async (req, res) => {
         author: req.body.author,
     })
     await blog.save()
-    res.send(blog)
+    res.send({
+        success: true,
+        data: blog,
+    })
 })
 
 blogsRouter.get("/getBlogs", async (req, res) => {
@@ -64,7 +67,10 @@ blogsRouter.get("/getBlogs", async (req, res) => {
 
     Blog.find().then((blogs) => {
 
-        res.send(blogs)
+        res.send({
+            success: true,
+            data: blogs.
+        })
     
     })
 })
@@ -75,7 +81,10 @@ blogsRouter.get("/myBlogs", async (req, res) => {
         author: req.headers.author
     }).then((blog) => {
         
-        res.send(blog)
+        res.send({
+            success: true,
+            data: blog,
+        })
     })
 })
 
@@ -84,7 +93,8 @@ blogsRouter.delete("/delete", async (req, res) => {
     Blog.findByIdAndDelete(req.headers.id).then((blog) => {
         
         res.send({
-            blog,
+            success: true,
+            data: blog,
             message: "Blog deleted successfully"
         })    
     }).catch((err) => {
