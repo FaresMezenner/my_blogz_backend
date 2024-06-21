@@ -69,7 +69,7 @@ blogsRouter.get("/getBlogs", async (req, res) => {
 
         res.send({
             success: true,
-            data: blogs.
+            data: blogs,
         })
     
     })
