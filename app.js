@@ -1,11 +1,10 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const jsonBodyParser = require('body-parser').json();
 const app = express();
 const port = process.env.PORT || 3000;
 
-
-const DB = "mongodb+srv://fares:sFEPwtCB0SiSDQs2@cluster0.8ebamfc.mongodb.net/?retryWrites=true&w=majority"
 
 const blogSchema = new mongoose.Schema({
     title: {
@@ -34,7 +33,7 @@ const blogSchema = new mongoose.Schema({
 
 const Blog = mongoose.model('Blog', blogSchema)
 
-mongoose.connect(DB).then(() => {
+mongoose.connect(process.env.DB).then(() => {
     console.log("Database connection Successful");
 }).catch((err) => console.log(err));
 
